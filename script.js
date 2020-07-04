@@ -7,16 +7,16 @@ const postContent = document.querySelector('#new-post-content');
 const submitButton = document.getElementById('submit-form');
 const divPostStorage = document.querySelector('#post-list');
 const span = document.getElementsByClassName('badge badge-light');
+const cardBody = document.createElement('div');
+const cardSpace = document.createElement('div');
+const check = document.querySelectorAll('')
 
 const myPost = () => {
   const newPostTitle = document.createElement('h5');
   const newPostContent = document.createElement('p');
-  const cardSpace = document.createElement('div');
-  const cardBody = document.createElement('div');
   cardBody.appendChild(newPostTitle);
   cardBody.appendChild(newPostContent);
   cardSpace.appendChild(cardBody);
-  divPostStorage.appendChild(cardSpace);
   
   newPostTitle.classList.add('card-title')
   newPostContent.classList.add('card-text');
@@ -25,37 +25,43 @@ const myPost = () => {
 
   newPostTitle.textContent = `${posTitle.value}`;
   newPostContent.textContent = `${postContent.value}`;
-
-  const hobbies = document.createElement('span');
-  document.getElementById('hobbies-tag').addEventListener("change", ($event) => {
-    if ($event.target.checked) {
-      cardBody.appendChild(hobbies);
-    }
-  });
-  hobbies.classList.add('badge', 'badge-light');
-
-  const schoolLife = document.createElement('span');
-  document.getElementById('school-life-tag').addEventListener("change", ($event) => {
-    if ($event.target.checked) {
-      cardBody.appendChild(schoolLife);
-    }
-  });
-  schoolLife.classList.add('badge', 'badge-light');
-
-  const personal = document.createElement('span');
-  document.getElementById('personal-tag').addEventListener("change", ($event) => {
-    if ($event.target.checked) {
-      cardBody.appendChild(personal);
-    }
-    personal.classList.add('badge', 'badge-light');
-  });
-  hobbies.textContent = "Hobbies";
-  schoolLife.textContent = "School life";
-  personal.textContent = "Personal";
+  divPostStorage.appendChild(cardSpace);
 };
+
 
 submitButton.addEventListener('click', ($event) => {
   $event.preventDefault();
   myPost();
   postForm.reset();
+  checkBox();
 });
+
+const checkBox = () => {
+const hobbies = document.createElement('span');
+document.getElementById('hobbies-tag').addEventListener("change", ($event) => {
+  if ($event.target.checked) {
+    cardBody.appendChild(hobbies);
+  }
+});
+hobbies.classList.add('badge', 'badge-light');
+
+const schoolLife = document.createElement('span');
+document.getElementById('school-life-tag').addEventListener("change", ($event) => {
+  if ($event.target.checked) {
+    cardBody.appendChild(schoolLife);
+  }
+});
+schoolLife.classList.add('badge', 'badge-light');
+
+const personal = document.createElement('span');
+document.getElementById('personal-tag').addEventListener("change", ($event) => {
+  if ($event.target.checked) {
+    cardBody.appendChild(personal);
+  }
+  personal.classList.add('badge', 'badge-light');
+});
+
+hobbies.textContent = "Hobbies";
+schoolLife.textContent = "School life";
+personal.textContent = "Personal";
+};
