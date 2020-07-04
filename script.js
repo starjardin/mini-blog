@@ -16,6 +16,24 @@ submitButton.addEventListener('click', ($event) => {
   newPostTitle.textContent = `${posTitle.value}`;
   newPostContent.textContent = `${postContent.value}`;
 });
+const span = document.getElementsByClassName('badge badge-light');
+const hobbies = document.getElementById('hobbies-tag').addEventListener("change", ($event) => {
+  if ($event.target.checked) {
+    cardBody.appendChild(span[0]);
+  }
+});
+
+const shoolLife = document.getElementById('school-life-tag').addEventListener("change", ($event) => {
+  if ($event.target.checked) {
+    cardBody.appendChild(span[1]);
+  }
+});
+
+const personal = document.getElementById('personal').addEventListener("change", ($event) => {
+  if ($event.target.checked) {
+    cardBody.appendChild(span[2]);
+  }
+});
 
 newPostTitle.classList.add('card-title')
 newPostContent.classList.add('card-text');
